@@ -19,7 +19,10 @@ public class App {
         } catch (NumberFormatException e) {
             System.out.println("Digite apenas Números!");
             return;
+        } finally {
+            scanner.close();
         }
+
 
     }
 
