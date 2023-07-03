@@ -3,9 +3,10 @@ package bloco;
 import java.util.Set;
 
 import model.Docente;
+import model.interfaces.Publicador;
 import model.interfaces.Sensor;
 
-public class BlocoUAI {
+public class BlocoUAI implements Publicador {
 
     private Set<Sensor> sensores;
     private Set<Docente> docentes;
@@ -14,15 +15,26 @@ public class BlocoUAI {
         this.sensores = sensores;
     }
 
-    public void subscribe(Docente docente) {
+    public void docenteEntrada(Docente docente) {
         this.docentes.add(docente);
     }
 
-    public void unsubscribe(Docente docente) {
+    public void docenteSaida(Docente docente) {
         this.docentes.remove(docente);
     }
 
-    public void notifySalas() {
+    @Override
+    public void subscribe(Sensor sensor) {
+        this.sensores.add(sensor);
+    }
+
+    @Override
+    public void unsubscribe(Sensor sensor) {
+        this.sensores.remove(sensor);
+    }
+
+    @Override
+    public void notifySubscribers() {
         for (Sensor sensor : this.sensores) {
             sensor.update(this.checkDocentesPresentes());
         }

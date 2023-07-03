@@ -1,8 +1,9 @@
 package model.eletronico;
 
 import model.interfaces.Eletronico;
+import model.interfaces.Sensor;
 
-public class ArCondicionado implements Eletronico {
+public class ArCondicionado implements Eletronico, Sensor {
     private boolean isOn;
     private int temperatura;
 
@@ -17,6 +18,15 @@ public class ArCondicionado implements Eletronico {
 
     public int getTemperatura() {
         return this.temperatura;
+    }
+
+    @Override
+    public void update(Boolean state) {
+        if (state) {
+            this.ligar();
+        } else {
+            this.desligar();
+        }
     }
 
     public boolean checkStatus() {
