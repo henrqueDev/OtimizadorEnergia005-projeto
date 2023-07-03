@@ -22,11 +22,14 @@ public class BlocoUAI implements Publicador {
 
     public void docenteEntrada(Docente docente) {
         if (!this.checkHasDocentesPresentes()) {
-            System.out.println("\nAparelhos estão sendo ligados!");
+            this.docentes.add(docente);
+            System.out.println("\n" + docente.getNome() + " entrou no Bloco! \n");
+            System.out.println("\nAparelhos estão sendo ligados!\n");
+            this.notifySubscribers();
+        } else {
+            this.docentes.add(docente);
+            System.out.println("\n" + docente.getNome() + " entrou no Bloco! \n");
         }
-        this.docentes.add(docente);
-        System.out.println("\n" + docente.getNome() + " entrou no Bloco! \n");
-        this.notifySubscribers();
     }
 
     public void docenteSaida(Docente docente) {
@@ -34,8 +37,8 @@ public class BlocoUAI implements Publicador {
         System.out.println("\n" + docente.getNome() + " saiu do Bloco! \n");
         if (!this.checkHasDocentesPresentes()) {
             System.out.println("Aparelhos sendo desligados! Não há mais docentes no bloco. \n");
+            this.notifySubscribers();
         }
-        this.notifySubscribers();
     }
 
     @Override

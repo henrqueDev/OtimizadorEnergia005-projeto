@@ -16,8 +16,7 @@ public class App {
             int value = Integer.parseInt(answer);
             System.out.println("\n");
             doTest(value);
-        }
-        catch (NumberFormatException e ) {
+        } catch (NumberFormatException e) {
             System.out.println("Digite apenas Números!");
             return;
         }
@@ -29,30 +28,34 @@ public class App {
         Set<Docente> docentes = db.getAllDocentes();
         BlocoUAI bloco = new BlocoUAI(db.getAllSensors());
 
-        switch(value) {
+        switch (value) {
             case 1:
-                for ( Docente docente : docentes ) {
+                for (Docente docente : docentes) {
                     bloco.docenteEntrada(docente);
-                };
+                }
+                ;
                 break;
             case 2:
-                //Seta os docentes para não disparar o notify para ligar os aparelhos
+                // Seta os docentes para não disparar o notify para ligar os aparelhos
                 bloco.setDocentes(docentes);
 
-                for ( Docente docente : new ArrayList<Docente>(docentes) ) {
+                for (Docente docente : new ArrayList<Docente>(docentes)) {
                     bloco.docenteSaida(docente);
-                };
+                }
+                ;
                 break;
             case 3:
                 System.out.println("Docentes entram em bloco vazio:");
-                for ( Docente docente : docentes ) {
+                for (Docente docente : docentes) {
                     bloco.docenteEntrada(docente);
-                };
+                }
+                ;
                 System.out.println("\n");
                 System.out.println("Todos os docentes saem do bloco.");
-                for ( Docente docente : docentes ) {
+                for (Docente docente : docentes) {
                     bloco.docenteSaida(docente);
-                };
+                }
+                ;
                 break;
             default:
                 System.out.println("Opção inválida!");
