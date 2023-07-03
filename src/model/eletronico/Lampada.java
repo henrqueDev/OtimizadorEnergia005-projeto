@@ -17,10 +17,10 @@ public class Lampada implements Eletronico, Sensor {
     @Override
     public void update(Boolean state) {
         if (state) {
-            // System.out.println("Lâmpada ligada!");
+            System.out.println("Lâmpada" + this.id + " ligada!");
             this.ligar();
         } else {
-            // System.out.println("Lâmpada desligada!");
+            System.out.println("Lâmpada" + this.id + " desligada!");
             this.desligar();
         }
     }

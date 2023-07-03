@@ -16,24 +16,26 @@ public class BlocoUAI implements Publicador {
         this.sensores = sensores;
     }
 
-    public void setDocentes (Set<Docente> docentes) {
+    public void setDocentes(Set<Docente> docentes) {
         this.docentes = docentes;
     }
 
     public void docenteEntrada(Docente docente) {
         if (!this.checkHasDocentesPresentes()) {
-            System.out.println("Aparelhos ligados!");
+            System.out.println("\nAparelhos estão sendo ligados!");
         }
         this.docentes.add(docente);
+        System.out.println("\n" + docente.getNome() + " entrou no Bloco! \n");
         this.notifySubscribers();
     }
 
     public void docenteSaida(Docente docente) {
         this.docentes.remove(docente);
-        this.notifySubscribers();
+        System.out.println("\n" + docente.getNome() + " saiu do Bloco! \n");
         if (!this.checkHasDocentesPresentes()) {
-            System.out.println("Aparelhos desligados! Não há mais docentes no bloco.");
+            System.out.println("Aparelhos sendo desligados! Não há mais docentes no bloco. \n");
         }
+        this.notifySubscribers();
     }
 
     @Override

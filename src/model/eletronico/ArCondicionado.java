@@ -26,10 +26,10 @@ public class ArCondicionado implements Eletronico, Sensor {
     @Override
     public void update(Boolean state) {
         if (state) {
-            // System.out.println("Ar Condicionado ligado!");
+            System.out.println("Ar Condicionado" + this.id + " ligado!");
             this.ligar();
         } else {
-            // System.out.println("Ar Condicionado desligado!");
+            System.out.println("Ar Condicionado" + this.id + " desligado!");
             this.desligar();
         }
     }

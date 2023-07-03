@@ -50,7 +50,7 @@ public final class Database {
                     19
                     ),
                 new Lampada(1),
-                new Lampada(1)
+                new Lampada(2)
 
             ))
         );
